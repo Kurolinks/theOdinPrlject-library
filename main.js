@@ -4,11 +4,6 @@ function books(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages
-    // this.readBook = readBook;
-    // this.report = function() {
-    //     const readStatus = this.hasRead ? "already read" : "not read yet";
-    //     return'${this.title} by ${this.author}, ${this.pages}, pages ${this.readBook}.';
-    // };
 };
 
 function addBookToLibrary (title, author, pages) {
@@ -30,3 +25,27 @@ function displayBooks (){
 }
 
 displayBooks();
+
+let showForm = document.querySelector(".newForm");
+let submit = document.querySelector(".submitButton");
+showForm.addEventListener("click", displayButtonFunction)
+submit.addEventListener("click", submitBookDetails);
+
+function displayButtonFunction() {
+    let form = document.querySelector("#myForm");
+    if (form.style.display === "none" || form.style.display === "") {
+        form.style.display = "block";
+    }
+    else {
+        form.style.display = "none";
+    }
+};
+
+function submitBookDetails() {
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+
+    let newBook = new books(title, author, pages);
+    myLibrary.push(newBook);
+};
