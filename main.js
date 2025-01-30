@@ -14,17 +14,13 @@ function addBookToLibrary (title, author, pages) {
 
 let indexOfList = 0;
 
-addBookToLibrary("Taming of the Shrew", "William Shakespear", 230);
-addBookToLibrary("Things Fall Apart", "Chinua Achebe", 209);
-addBookToLibrary("Half of a Yellow Sun", "Chimamanda Ngozi Adichie", 433);
-
 function displayBooks (){
+
     myLibrary.forEach((books, index) => {
-        console.log(`${indexOfList += 1}. Title: ${books.title}, Author: ${books.author}, Number of Pages: ${books.pages}.`);
+        alert(`${indexOfList += 1}. Title: ${books.title}, Author: ${books.author}, Number of Pages: ${books.pages}.`);
     });
 }
 
-displayBooks();
 
 let showForm = document.querySelector(".newForm");
 let submit = document.querySelector(".submitButton");
@@ -46,6 +42,15 @@ function submitBookDetails() {
     let author = document.getElementById("author").value;
     let pages = document.getElementById("pages").value;
 
-    let newBook = new books(title, author, pages);
+    let newBook = {
+        title: title,
+        author: author,
+        pages: pages
+    };
+
     myLibrary.push(newBook);
+    displayBooks();
 };
+
+
+// userListElement.innerHTML = "";  // Clear the list first
