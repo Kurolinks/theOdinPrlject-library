@@ -1,16 +1,16 @@
-.container {
+.header {
     /* background-color: rgb(166, 209, 221); */
     display: grid;
-    grid-template-rows: 0.2fr 1fr 4fr;
+    grid-template-columns: 1fr 4fr;
     height: 100%;
     gap: 10px;
 }
 
 .divButton {
     display: flex;
-    padding: 50px;
+    padding: 20px;
 }
-.newForm {
+.newBookButton {
     align-items: center;
     background-color: rgb(128, 128, 182);
     border: 1px solid white;
@@ -18,10 +18,10 @@
     color: white;
     cursor: pointer;
     font-size: 20px;
-    height: 3rem;
-    left: 40%;
-    top: 40%;
-    width: 12rem;
+    height: 2.7rem;
+    /* left: 40%; */
+    /* top: 40%; */
+    width: 8rem;
 }
 
 h3 {
@@ -34,7 +34,7 @@ form {
     /* display: none; */
     flex-direction: column;
     height: 14rem;
-    width: 28rem;
+    width: 27rem;
 }
 
 .form span {
@@ -52,6 +52,7 @@ span label {
 }
 
 .form input {
+    margin-left: 15px;
     width: 170px;
 }
 
@@ -67,4 +68,52 @@ span label {
     margin-left: 40%;
     margin-top: 30px;
     width: 5rem;
+}
+
+.library {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.left,
+.center,
+.right {
+    background-color: rgb(176, 201, 231);
+    border: 1px solid rgb(47, 229, 232);
+    border-radius: 15px;
+    /* flex-direction: column; */
+    height: 12rem;
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 22rem;
+}
+
+.left div,
+.center div,
+.right div {
+    color: rgb(40, 116, 43);
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+}
+
+.title-one, .author-one, .pages-one {
+    margin-left: 30px;
+}
+
+.title-two, .author-two, .pages-two {
+    margin-left: 20px;
+}
+
+.delete-button {
+    background-color: rgb(128, 128, 182);
+    border: 0;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    height: 2.1rem;
+    margin-left: 100px;
+    width: 10rem;
 }
