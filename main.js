@@ -25,6 +25,14 @@ let submit = document.querySelector(".submitButton");
 let library = document.querySelector(".library");
 showForm.addEventListener("click", displayButtonFunction)
 submit.addEventListener("click", submitBookDetails);
+let title = document.querySelector("#title");
+let author = document.querySelector("#author");
+let pages = document.querySelector("#pages");
+document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevents page reload
+});
+
+
 
 function displayButtonFunction() {
     let form = document.querySelector("#myForm");
@@ -50,6 +58,8 @@ function submitBookDetails() {
     myLibrary.push(newBook);
     displayBooks();
 
+    // alert(title.value);
+    createNewCard();
 };
 
 function displayBooks (){
@@ -60,7 +70,9 @@ function displayBooks (){
 }
 
 // userListElement.innerHTML = "";  // Clear the list first
-// Create a new card for a new book
+
+function createNewCard () {
+    // Create a new card for a new book
     const newDiv = document.createElement("div");
     const newCard = document.createElement("div");
     const newCardDiv1 = document.createElement("div");
@@ -111,15 +123,29 @@ function displayBooks (){
         fontSize: "16px",
     });
 
+    // Work on delete button
+    deleteButton.addEventListener("click", deleteBook());
+    function deleteBook() {
+        alert("delete");
+        newDiv.innerHTML = "";    
+    };
+
     titleOne.style.marginLeft = "30px";
     titleOne.textContent = "Title of Book:";
+    titleTwo.style.marginLeft = "20px";
+    titleTwo.textContent = title.value
+
     authorOne.style.marginLeft = "30px";
     authorOne.textContent = "Name of Author:";
+    authorTwo.style.marginLeft = "20px";
+    authorTwo.textContent = author.value;
+
     pagesOne.style.marginLeft = "30px";
     pagesOne.textContent = "Number of Pages:";
-    titleTwo.style.marginLeft = "20px";
-    authorTwo.style.marginLeft = "20px";
     pagesTwo.style.marginLeft = "20px";
+    pagesTwo.textContent = pages.value;
+
+    deleteButton.textContent = "Delete Post";
 
     Object.assign(deleteButton.style, {
         backgroundColor: "rgb(128, 128, 182)",
@@ -145,3 +171,4 @@ function displayBooks (){
     newCardDiv3.appendChild(pagesOne);
     newCardDiv3.appendChild(pagesTwo);
     newCard.appendChild(deleteButton);
+}
