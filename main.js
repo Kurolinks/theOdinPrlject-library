@@ -14,16 +14,10 @@ function addBookToLibrary (title, author, pages) {
 
 let indexOfList = 0;
 
-addBookToLibrary("Taming of the Shrew", "William Shakespear", 230);
-addBookToLibrary("Things Fall Apart", "Chinua Achebe", 209);
-addBookToLibrary("Half of a Yellow Sun", "Chimamanda Ngozi Adichie", 433);
+// addBookToLibrary("Taming of the Shrew", "William Shakespear", 230);
+// addBookToLibrary("Things Fall Apart", "Chinua Achebe", 209);
+// addBookToLibrary("Half of a Yellow Sun", "Chimamanda Ngozi Adichie", 433);
 
-function displayBooks (){
-
-    myLibrary.forEach((books, index) => {
-        alert(`${indexOfList += 1}. Title: ${books.title}, Author: ${books.author}, Number of Pages: ${books.pages}.`);
-    });
-}
 
 
 let showForm = document.querySelector(".newBookButton");
@@ -56,7 +50,17 @@ function submitBookDetails() {
     myLibrary.push(newBook);
     displayBooks();
 
-    // Create a new card for a new book
+};
+
+function displayBooks (){
+
+    myLibrary.forEach((books, index) => {
+        alert(`${indexOfList += 1}. Title: ${books.title}, Author: ${books.author}, Number of Pages: ${books.pages}.`);
+    });
+}
+
+// userListElement.innerHTML = "";  // Clear the list first
+// Create a new card for a new book
     const newDiv = document.createElement("div");
     const newCard = document.createElement("div");
     const newCardDiv1 = document.createElement("div");
@@ -70,32 +74,37 @@ function submitBookDetails() {
     const pagesTwo = document.createElement("p");
     const deleteButton = document.createElement("button");
 
-    // Style the new div
+    // Style the newDiv
     Object.assign(newDiv.style, {
-        width: "22rem",
-        height: "12rem",
         background: "rgb(176, 201, 231)",
         border: "1px solid rgb(47, 229, 232",
         borderRadius: "15px",
+        // display: "flex",
+        // flexDirection: "column",
+        height: "12rem",
         marginLeft: "10px",
         marginTop: "20px",
+        width: "22rem",
     });
 
-    Object.assign(newCard1.style, {
+    // Style the first div in newCard
+    Object.assign(newCardDiv1.style, {
         color: "rgb(40, 116, 43)",
         display: "flex",
         flexDirection: "row",
         fontSize: "16px",
     });
 
-    Object.assign(newCard2.style, {
+    // Style the 2nd div in newCard
+    Object.assign(newCardDiv2.style, {
         color: "rgb(40, 116, 43)",
         display: "flex",
         flexDirection: "row",
         fontSize: "16px",
     });
 
-    Object.assign(newCard3.style, {
+    // Style the third div in newCard
+    Object.assign(newCardDiv3.style, {
         color: "rgb(40, 116, 43)",
         display: "flex",
         flexDirection: "row",
@@ -103,11 +112,11 @@ function submitBookDetails() {
     });
 
     titleOne.style.marginLeft = "30px";
-    titleOne.style.textContent = "Title of Book:"
+    titleOne.textContent = "Title of Book:";
     authorOne.style.marginLeft = "30px";
-    authorOne.style.textContent = "Name of Author:"
+    authorOne.textContent = "Name of Author:";
     pagesOne.style.marginLeft = "30px";
-    pagesOne.style.textContent = "Number of Pages:"
+    pagesOne.textContent = "Number of Pages:";
     titleTwo.style.marginLeft = "20px";
     authorTwo.style.marginLeft = "20px";
     pagesTwo.style.marginLeft = "20px";
@@ -124,20 +133,15 @@ function submitBookDetails() {
         width:" 10rem",
     })
 
-    // newDiv.style.justifyContent = "center";
     library.appendChild(newDiv);
-    library.appendChild(newCard);
+    newDiv.appendChild(newCard);
     newCard.appendChild(newCardDiv1);
     newCardDiv1.appendChild(titleOne);
     newCardDiv1.appendChild(titleTwo);
     newCard.appendChild(newCardDiv2);
-    newCardDiv1.appendChild(authorOne);
-    newCardDiv1.appendChild(authorTwo);
-    newCard.appendChild(newCardDiv);
-    newCardDiv1.appendChild(pagesOne);
-    newCardDiv1.appendChild(pagesTwo);
+    newCardDiv2.appendChild(authorOne);
+    newCardDiv2.appendChild(authorTwo);
+    newCard.appendChild(newCardDiv3);
+    newCardDiv3.appendChild(pagesOne);
+    newCardDiv3.appendChild(pagesTwo);
     newCard.appendChild(deleteButton);
-};
-
-
-// userListElement.innerHTML = "";  // Clear the list first
