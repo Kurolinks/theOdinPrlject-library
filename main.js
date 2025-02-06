@@ -14,15 +14,9 @@ function addBookToLibrary (title, author, pages) {
 
 let indexOfList = 0;
 
-// addBookToLibrary("Taming of the Shrew", "William Shakespear", 230);
-// addBookToLibrary("Things Fall Apart", "Chinua Achebe", 209);
-// addBookToLibrary("Half of a Yellow Sun", "Chimamanda Ngozi Adichie", 433);
-
-
-
 let showForm = document.querySelector(".newBookButton");
 let submit = document.querySelector(".submitButton");
-let library = document.querySelector(".library");
+let library = document.querySelector(".new-library");
 showForm.addEventListener("click", displayButtonFunction)
 submit.addEventListener("click", submitBookDetails);
 let title = document.querySelector("#title");
@@ -56,20 +50,11 @@ function submitBookDetails() {
     };
 
     myLibrary.push(newBook);
-    displayBooks();
+    
 
     // alert(title.value);
     createNewCard();
 };
-
-function displayBooks (){
-
-    myLibrary.forEach((books, index) => {
-        alert(`${indexOfList += 1}. Title: ${books.title}, Author: ${books.author}, Number of Pages: ${books.pages}.`);
-    });
-}
-
-// userListElement.innerHTML = "";  // Clear the list first
 
 function createNewCard () {
     // Create a new card for a new book
@@ -124,27 +109,24 @@ function createNewCard () {
     });
 
     // Work on delete button
-    deleteButton.addEventListener("click", deleteBook());
+    deleteButton.addEventListener("click", deleteBook);
     function deleteBook() {
-        alert("delete");
         newDiv.innerHTML = "";    
     };
 
+    // style card and input contents
     titleOne.style.marginLeft = "30px";
     titleOne.textContent = "Title of Book:";
     titleTwo.style.marginLeft = "20px";
     titleTwo.textContent = title.value
-
     authorOne.style.marginLeft = "30px";
     authorOne.textContent = "Name of Author:";
     authorTwo.style.marginLeft = "20px";
     authorTwo.textContent = author.value;
-
     pagesOne.style.marginLeft = "30px";
     pagesOne.textContent = "Number of Pages:";
     pagesTwo.style.marginLeft = "20px";
     pagesTwo.textContent = pages.value;
-
     deleteButton.textContent = "Delete Post";
 
     Object.assign(deleteButton.style, {
@@ -172,3 +154,16 @@ function createNewCard () {
     newCardDiv3.appendChild(pagesTwo);
     newCard.appendChild(deleteButton);
 }
+
+// if (inputValue === "") {
+//     alert("Please fill in the required field.");
+// } else {
+//     this.submit(); // Allows form submission if input is not empty
+// }
+
+
+
+// Todo list
+// 1. Work on delete button
+// 2. Stop form from submitting empty
+// 3. Style div

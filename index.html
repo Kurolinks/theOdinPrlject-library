@@ -17,15 +17,15 @@
                 <h3>Fill this form to add a Book to the Library</h3>
                 <span>
                     <label for="title">Title of Book:</label>
-                    <input id="title" type="text" name="title">
+                    <input required id="title" type="text" name="title">
                 </span>
                 <span>
                     <label for="author">Name of Author:</label>
-                    <input id="author" type="text">
+                    <input required id="author" type="text">
                 </span>
                 <span>
                     <label for="pages">Number of Pages:</label>
-                    <input id="pages" type="text">
+                    <input required id="pages" type="number">
                 </span>
                 <button class="submitButton" type="submit">SUBMIT</button>
             </form>
@@ -80,6 +80,7 @@
             <button type="button" class="delete-button">Delete Book</button>
         </div>
     </div>
+    <div class="new-library"></div>
     <script src="main.js"></script>
 </body>
 </html>
