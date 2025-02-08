@@ -14,19 +14,19 @@ function addBookToLibrary (title, author, pages) {
 
 let indexOfList = 0;
 
+let form = document.querySelector("#myform");
 let showForm = document.querySelector(".newBookButton");
 let submit = document.querySelector(".submitButton");
-let library = document.querySelector(".new-library");
+let newLibraryDiv = document.querySelector(".new-library-div");
 showForm.addEventListener("click", displayButtonFunction)
 submit.addEventListener("click", submitBookDetails);
 let title = document.querySelector("#title");
 let author = document.querySelector("#author");
 let pages = document.querySelector("#pages");
-document.querySelector("form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevents page reload
-});
-
-
+// document.querySelector(".form").addEventListener("submit", function(event) {
+//     event.preventDefault(); // Prevents page reload
+// });
+  
 
 function displayButtonFunction() {
     let form = document.querySelector("#myForm");
@@ -38,7 +38,8 @@ function displayButtonFunction() {
     }
 };
 
-function submitBookDetails() {
+function submitBookDetails(event) {
+    event.preventDefault(); // Prevent page reload
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
     let pages = document.getElementById("pages").value;
@@ -51,13 +52,26 @@ function submitBookDetails() {
 
     myLibrary.push(newBook);
     
+    // form.style.display = "block"; // Show the form
 
-    // alert(title.value);
-    createNewCard();
+    let allFilled = true;
+    document.querySelectorAll("form input").forEach(input => {
+        if (!input.value.trim()) allFilled = false;
+    });
+
+    if (!allFilled) {
+        alert("Please fill in all fields!");
+    } else {
+        createNewCard();
+        document.getElementById("title").value = "";
+        document.getElementById("author").value = "";
+        document.getElementById("pages").value = "";
+    }
 };
 
 function createNewCard () {
     // Create a new card for a new book
+    const newLibrary = document.createElement("div");
     const newDiv = document.createElement("div");
     const newCard = document.createElement("div");
     const newCardDiv1 = document.createElement("div");
@@ -71,13 +85,18 @@ function createNewCard () {
     const pagesTwo = document.createElement("p");
     const deleteButton = document.createElement("button");
 
+    // Style the newLibrary
+    Object.assign(newLibrary.style, {
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+        gap: "10px",
+    });
+
     // Style the newDiv
     Object.assign(newDiv.style, {
         background: "rgb(176, 201, 231)",
         border: "1px solid rgb(47, 229, 232",
         borderRadius: "15px",
-        // display: "flex",
-        // flexDirection: "column",
         height: "12rem",
         marginLeft: "10px",
         marginTop: "20px",
@@ -111,7 +130,7 @@ function createNewCard () {
     // Work on delete button
     deleteButton.addEventListener("click", deleteBook);
     function deleteBook() {
-        newDiv.innerHTML = "";    
+        newLibrary.innerHTML = "";    
     };
 
     // style card and input contents
@@ -141,7 +160,8 @@ function createNewCard () {
         width:" 10rem",
     })
 
-    library.appendChild(newDiv);
+    newLibraryDiv.appendChild(newLibrary);
+    newLibrary.appendChild(newDiv);
     newDiv.appendChild(newCard);
     newCard.appendChild(newCardDiv1);
     newCardDiv1.appendChild(titleOne);
@@ -164,6 +184,4 @@ function createNewCard () {
 
 
 // Todo list
-// 1. Work on delete button
 // 2. Stop form from submitting empty
-// 3. Style div
