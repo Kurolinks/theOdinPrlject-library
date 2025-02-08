@@ -1,19 +1,16 @@
 const myLibrary = [];
 
+// create bbok object
 function books(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages
 };
 
-function addBookToLibrary (title, author, pages) {
-    //take params, create a book then store it in the array
-    let newBook = new books(title, author, pages);
-    myLibrary.push(newBook);
-};
 
 let indexOfList = 0;
 
+//select some html elements
 let form = document.querySelector("#myform");
 let showForm = document.querySelector(".newBookButton");
 let submit = document.querySelector(".submitButton");
@@ -23,11 +20,9 @@ submit.addEventListener("click", submitBookDetails);
 let title = document.querySelector("#title");
 let author = document.querySelector("#author");
 let pages = document.querySelector("#pages");
-// document.querySelector(".form").addEventListener("submit", function(event) {
-//     event.preventDefault(); // Prevents page reload
-// });
-  
 
+  
+// hide and unhide form
 function displayButtonFunction() {
     let form = document.querySelector("#myForm");
     if (form.style.display === "none" || form.style.display === "") {
@@ -38,6 +33,7 @@ function displayButtonFunction() {
     }
 };
 
+// function to submit book
 function submitBookDetails(event) {
     event.preventDefault(); // Prevent page reload
     let title = document.getElementById("title").value;
@@ -51,8 +47,6 @@ function submitBookDetails(event) {
     };
 
     myLibrary.push(newBook);
-    
-    // form.style.display = "block"; // Show the form
 
     let allFilled = true;
     document.querySelectorAll("form input").forEach(input => {
@@ -130,7 +124,7 @@ function createNewCard () {
     // Work on delete button
     deleteButton.addEventListener("click", deleteBook);
     function deleteBook() {
-        newLibrary.innerHTML = "";    
+        newLibrary.remove();  
     };
 
     // style card and input contents
@@ -148,6 +142,7 @@ function createNewCard () {
     pagesTwo.textContent = pages.value;
     deleteButton.textContent = "Delete Post";
 
+    // style delete button
     Object.assign(deleteButton.style, {
         backgroundColor: "rgb(128, 128, 182)",
         border: "0",
@@ -160,6 +155,7 @@ function createNewCard () {
         width:" 10rem",
     })
 
+    // place elements created in the DOM into the page
     newLibraryDiv.appendChild(newLibrary);
     newLibrary.appendChild(newDiv);
     newDiv.appendChild(newCard);
@@ -174,14 +170,3 @@ function createNewCard () {
     newCardDiv3.appendChild(pagesTwo);
     newCard.appendChild(deleteButton);
 }
-
-// if (inputValue === "") {
-//     alert("Please fill in the required field.");
-// } else {
-//     this.submit(); // Allows form submission if input is not empty
-// }
-
-
-
-// Todo list
-// 2. Stop form from submitting empty
